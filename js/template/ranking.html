@@ -1,0 +1,23 @@
+<header>
+    <h1>Pool A - Ranking</h1>
+</header>
+ <table>
+    <tr>
+        <th>Team</th>
+        <th>W</th>
+        <th>L</th>
+        <th>Points won</th>
+        <th>Points lost</th>
+        <th>+/-</th>
+    </tr>
+    {{#ranking}}
+    <tr>
+        <td>{{team}}</td>
+        <td>{{Win}}</td>
+        <td>{{Lost}}</td>
+        <td>{{Sw}}</td>
+        <td>{{Sl}}</td>
+        <td>{{Pl}}</td>
+    </tr>
+    {{/ranking}}
+</table>
