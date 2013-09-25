@@ -1,14 +1,15 @@
 
 var SCORE_APP = SCORE_APP || {}; // namespace
 
+
+
 (function (){
 	requirejs.config({
 	    urlArgs: "bust=" + (new Date()).getTime()
 	});
 
-	requirejs(['ready.min', 'mustache', 'routie.min'],
-	function (domready, Mustache) {
-		
+	requirejs(['ready.min', 'mustache', 'qwery.min', 'routie.min'],
+	function (domready, Mustache, qwery) {
 		
 		
 		SCORE_APP.application = {
@@ -39,7 +40,9 @@ var SCORE_APP = SCORE_APP || {}; // namespace
 			showGamePage : function(){
 				require(['text!template/game.html', 'data/game.data'], function(template, data){
 
-					var templateContainer = document.getElementById('template_container');
+					SCORE_APP.pages.navigation.setActiveMenuItem(0);
+
+					var templateContainer = qwery('#template_container')[0];
 					templateContainer.innerHTML = Mustache.render(template, data);		
 				});
 				
@@ -47,7 +50,9 @@ var SCORE_APP = SCORE_APP || {}; // namespace
 			showSchedulePage : function(){
 				require(['text!template/schedule.html', 'data/schedule.data'], function(template, data){
 
-					var templateContainer = document.getElementById('template_container');
+					SCORE_APP.pages.navigation.setActiveMenuItem(1);
+
+					var templateContainer = qwery('#template_container')[0];
 					templateContainer.innerHTML = Mustache.render(template, data);		
 				});
 
@@ -55,10 +60,25 @@ var SCORE_APP = SCORE_APP || {}; // namespace
 			showRankingPage : function(){
 				require(['text!template/ranking.html', 'data/ranking.data'], function(template, data){
 
-					var templateContainer = document.getElementById('template_container');
-					
+					SCORE_APP.pages.navigation.setActiveMenuItem(2);
+
+					var templateContainer = qwery('#template_container')[0];					
 					templateContainer.innerHTML = Mustache.render(template, data);		
 				});
+			},
+
+			navigation : {
+				setActiveMenuItem : function(menuIndex){
+					var nav = qwery('.nav li');
+					 for(var i=0; i < nav.length; i++) {
+					   var li = nav[i];
+					   li.className = '';
+					}
+
+					nav[menuIndex].className = 'active';
+
+				}
+
 			}
 
 		};
