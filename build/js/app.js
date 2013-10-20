@@ -1,0 +1,1 @@
+define(["jquery","underscore","backbone","router","utils"],function(e,t,n,r,i){var s=function(){e.ajaxPrefilter(function(e,t,n){e.url="https://api.leaguevine.com/v1"+e.url}),r.initialize()};return{initialize:s}});

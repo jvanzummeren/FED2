@@ -1,0 +1,1 @@
+define(["jquery","underscore","backbone"],function(){var e=Backbone.Collection.prototype.fetch;Backbone.Collection.prototype.fetch=function(t){this.trigger("fetch:started"),e.call(this,t)}});

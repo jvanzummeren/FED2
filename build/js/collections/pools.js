@@ -1,0 +1,1 @@
+define(["models/pool"],function(e){var t=Backbone.Collection.extend({urlRoot:"/pools/",fields:"[id,name,standings]",url:function(){return this.urlRoot+"?fields="+encodeURIComponent(this.fields)},model:e,parse:function(e){return e.objects},comparator:function(e){return e.get("name")}});return t});

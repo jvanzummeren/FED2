@@ -1,0 +1,1 @@
+define([],function(){var e=Backbone.Model.extend({initialize:function(){this.on("change",function(){this.updated_at=new Date},this)}});return e});

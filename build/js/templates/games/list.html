@@ -1,0 +1,27 @@
+  <h1>Games</h1>
+
+  <table class="table table-striped table-bordered">
+  	 <% _.each(game_groups, function(game_group, start_day){ %>
+	      <tr class="colhead">
+	          <th><%=start_day%></th>
+	          <th>Team</th>
+	          <th>Result</th>
+	          <th>Team</th>
+	          <th>Update</th>
+	      </tr>
+
+	    <% _.each(game_group, function(game){ %>
+	       <tr>
+	          <td><%=game.get("start_time")%></td>
+	          <td><%= (game.get("team_1")) ? game.get("team_1").name : 'No Team.' %></td>
+	          <td><%= (game.get("team_1_score")) ? game.get("team_1_score") : '0' %>
+	         - 
+	         <%= (game.get("team_2_score")) ? game.get("team_2_score") : '0' %>
+	          </td>
+	          <td><%= (game.get("team_2")) ? game.get("team_2").name : 'No Team.' %></td>
+	          <td><a>Update</a></td>
+	        </tr>
+	    <% }); %>
+    <% }); %>
+  </table>
+

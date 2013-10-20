@@ -1,0 +1,1 @@
+define(["models/tournament"],function(e){var t=Backbone.Collection.extend({urlRoot:"/tournaments/",fields:"[id, name,start_date]",model:e,url:function(){return this.urlRoot+"?fields="+encodeURIComponent(this.fields)},parse:function(e){return e.objects},comparator:function(e){return e.get("start_date")}});return t});
