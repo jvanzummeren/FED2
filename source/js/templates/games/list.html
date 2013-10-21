@@ -19,7 +19,7 @@
 	         <%= (game.get("team_2_score")) ? game.get("team_2_score") : '0' %>
 	          </td>
 	          <td><%= (game.get("team_2")) ? game.get("team_2").name : 'No Team.' %></td>
-	          <td><a>Update</a></td>
+	          <td><a href="#/game/score/<%=game.get("id")%>">Update</a></td>
 	        </tr>
 	    <% }); %>
     <% }); %>

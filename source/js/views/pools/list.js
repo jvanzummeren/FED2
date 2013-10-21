@@ -1,6 +1,5 @@
 // Filename: views/projects/list
 define([
-
   // Pull in the Collection module from above
   'collections/pools',
   'collections/games',

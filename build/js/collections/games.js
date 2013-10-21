@@ -1,1 +1,0 @@
-define(["models/Game"],function(e){var t=Backbone.Collection.extend({urlRoot:"/games/",fields:"[id, pool, start_time, team_1, team_1_score, team_2, team_2_score]",url:function(){return this.urlRoot+"?fields="+encodeURIComponent(this.fields)},model:e,parse:function(e){return e.objects},comparator:function(e){return e.get("start_time")}});return t});
