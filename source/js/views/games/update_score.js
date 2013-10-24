@@ -8,28 +8,38 @@ define([
 
 
   var UpdateScoreView = Backbone.View.extend({
-    el: $("#content"),
+    el: $("#update_score"),
     id : null,
     gameModel : null,
-    initialize : function(options){
-      this.id = options.id;
-      this.gameModel = new Game({id: this.id});
+    initialize : function(){
+      
+      this.gameModel = new Game();
       /* Display a loading indication whenever the Collection is fetching.*/
       this.gameModel.on("fetch:started", function() {
           //show loading.
-          this.$el.html("loading...");
+        //  this.$el.html("loading...");
       }, this);
     },
-
-    render: function(){
+    success : function(fetchSuccess){
+      this.fetchSuccess = fetchSuccess;
+    },
+    render: function(game){
+      var compiledTemplate = _.template( updateScoreTemplate,  { game:game });
+      this.$el.find('#score-content').html(compiledTemplate);
+    },
+    fetch : function(){
         var that = this;
-
+        this.gameModel.id = this.id;
         this.gameModel.fetch({
           success: function(game){
-            var compiledTemplate = _.template( updateScoreTemplate,  { game:game });
-            that.$el.html(compiledTemplate);
+
+            if(that.fetchSuccess){
+                that.fetchSuccess();
+            }
+            that.render(game);
           }
         }); 
+        return this;
     },
 
     events: {

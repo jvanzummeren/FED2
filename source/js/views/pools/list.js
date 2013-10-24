@@ -11,26 +11,44 @@ define([
   
 
   var PoolsViews = Backbone.View.extend({
-    el: $("#content"),
+    el: $("#pools"),
     tournamentId : 'None.',
-    initialize: function(options){
+    initialize: function(){
       
       this.poolCollection = new PoolsCollection();
       this.gamesCollection = new GamesCollection();
 
-      this.tournamentId = options.tournamentId;
+     // this.tournamentId = options.tournamentId;
       
       /* Display a loading indication whenever the Collection is fetching.*/
       this.poolCollection.on("fetch:started", function() {
           //show loading.
-          this.$el.html("loading...");
+          this.$el.find('#pool-content').html("");
       }, this);
+    },
+    success : function(fetchSuccess){
+      this.fetchSuccess = fetchSuccess;
     },
 
     render: function(){
-      this.fetchData();
+      //this.fetchData();
     },
-
+    events : {
+        'tap .details' : 'goToUpdateScore',
+        'tap .ui-btn-left' : 'back'
+    },
+    back: function(){
+     
+      
+      FED_APP.router.navigate('/', {trigger: true});
+    },
+    goToUpdateScore: function(e){
+      $el = $(e.currentTarget);
+      
+      var id = $el.attr('id');
+     // window.location.href = '#/game/score/'+id;
+      FED_APP.router.navigate('/game/score/'+id, {trigger: true});
+    },
     fetchData: function(){
       var that = this;
 
@@ -55,6 +73,8 @@ define([
 
       });
 
+      return this;
+
     },
 
     combinePoolsAndGames : function(){
@@ -74,7 +94,10 @@ define([
            pool.set({grouped_games:groupedGames });
         });
 
-        this.renderTemplate();
+        if(this.fetchSuccess){
+            this.fetchSuccess();
+        }
+        FED_APP.poolsView.renderTemplate();
     },
 
     renderTemplate : function(){
@@ -86,7 +109,8 @@ define([
             pools: this.pools.models, 
             gameListTemplate:gameListTemplate
         });
-        this.$el.html(compiledTemplate);
+        console.log("Render pools?");
+        this.$el.find("#pool-content").html(compiledTemplate);
     }
 
   });

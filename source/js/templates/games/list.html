@@ -1,20 +1,18 @@
   <section class="games">
-  	<header>
-  		<h1>Games</h1>
-  	</header>
 
   	 <% _.each(game_groups, function(game_group, start_day){ %>
 	      <header>
-	      		<h2> <%=start_day%></h2>
+	      		<h2>Games <%=start_day%></h2>
 	      </header>
 
 	    <% _.each(game_group, function(game){ %>
-	       <article>
+	       <article class="details" id="<%=game.get("id")%>">
+
 	          <p class="result"><%= (game.get("team_1_score")) ? game.get("team_1_score") : '0' %>
 	         - 
 	         <%= (game.get("team_2_score")) ? game.get("team_2_score") : '0' %>
 	          </p>
-	          <p class="time"><%=game.get("start_time")%></p>
+	          
 	          <p class="teams">
 	          	<span class="team_1_name">
 	          		<%= (game.get("team_1")) ? game.get("team_1").name : 'No Team.' %>
@@ -24,6 +22,7 @@
 	          		<%= (game.get("team_2")) ? game.get("team_2").name : 'No Team.' %>
 	          	</span>
 	          </p>
+	          <p class="time"><%=game.get("start_time")%></p>
 	          <a href="#/game/score/<%=game.get("id")%>"></a>
 	        </article>
 	    <% }); %>

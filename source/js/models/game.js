@@ -10,8 +10,8 @@ define([
     return this.urlRoot + this.id + "/";// + "?fields=" + encodeURIComponent(this.fields);
   },
 
-  initialize: function(options){
-    this.id = options.id;
+  initialize: function(){
+   
   },
 
 	parse: function(resp, xhr) {

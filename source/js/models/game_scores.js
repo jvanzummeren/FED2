@@ -1,7 +1,7 @@
 // Filename: models/project
 define([
-  
-], function(){
+  'backbone'
+], function(Backbone){
   var GameScores = Backbone.Model.extend({
   id: null,
   urlRoot: "/game_scores/",

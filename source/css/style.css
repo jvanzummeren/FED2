@@ -11,14 +11,12 @@ body{
 
 table{
 	width:100%;
+	background: #fff;
 }
 table .width-50{
 	width:50%;
 }
 
-table tr:nth-child(even){
-	background:#eee;
-}
 
 table th{
 	text-align: left;;
@@ -29,7 +27,7 @@ p{
 	margin: 0; padding: 0;
 }
 
-h2{ font-size:80%; color:#6d6d72; margin-left:10px; text-transform: uppercase;}
+h2{ font-size:80%; color:#6d6d72; margin-left:10px; text-transform: uppercase; padding-top:15px; float: left;;}
 /*Game rows*/
 
 table.pool td{
@@ -38,26 +36,30 @@ table.pool td{
 
 .games{}
 
+.games article:first-child{
+border-top:1px solid #c8c7cc;
+}
+
 .games article{
 	width:100%;
 	border-bottom:1px solid #c8c7cc;
 	float:left;
-	background:url(images/arrow.png) 97% 50% no-repeat #fff;
-	background-size:9px 13px;
+	background:url(images/arrow.png) 100% 50% no-repeat #fff;
+	background-size:12px 13px;
 
 	clear:both;
 	position: relative;
-	padding:1% 0 1% 0;
+	padding:5px 0 5px 0;
 }
 
-.games article .time{
-	float:left;
-	width:70%;
+.games article .result{
+	position:absolute;
+	width:50px;
+	text-align: right;
 	color:#8e8e93;
-	margin-left:75px;
 	font-size: 80%;
-	margin-top:1%;
-	margin-bottom:1%;
+	right:30px;
+	top: 20px;
 	line-height:110%;
 	
 }
@@ -67,7 +69,7 @@ table.pool td{
 	color:#333;
 	width:70%;
 	font-size: 90%;
-	margin-left:75px;
+	margin-left:55px;
 	margin-right:2%;
 }
 
@@ -76,24 +78,24 @@ table.pool td{
 	line-height: 130%;
 }
 
-.games article .result{
+.games article .time{
 
 	position: absolute;;
 	left:0;
-	top:17px;
-	width:55px;
+	top:12px;
+	width:45px;
 	margin-left:0px;
-	padding-left:3px;
-	padding-top: 3px;
-	padding-bottom: 3px;
-	padding-right: 3px;
+	padding-left:0px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	padding-right: 2px;
 	text-align: center;
 	background:#ff9500;
 	border-radius: 0px 14px 14px 0px;
 	color:#fff;
 	height:30px;
 	line-height: 30px;
-	font-size: 90%;
+	font-size: 70%;
 
 }
 

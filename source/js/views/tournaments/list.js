@@ -6,41 +6,47 @@ define([
 ], function(TournamentsCollection, tournamentListTemplate){
 
   var TournamentListView = Backbone.View.extend({
-    el: $("#content"),
+    el: $("#tournaments"),
     initialize: function(){
       
       this.collection = new TournamentsCollection();
-     
-      /* Display a loading indication whenever the Collection is fetching.*/
-      this.collection.on("fetch:started", function() {
-          //show loading.
-          console.log("fetch started, show loading");
-          //this.$el.html("loading...");
-      }, this);
 
+    },
+    events : {
+        'tap a' : 'goToPools'
+    },
+    goToPools : function(e){
+      $el = $(e.currentTarget);
+      
+      var id = $el.attr('id');
+    
+      FED_APP.router.navigate('/pools/'+id, {trigger: true});
+    },
+    render: function(groupedTournaments){
+     
+      var compiledTemplate = _.template( tournamentListTemplate, { tournament_groups: groupedTournaments } );
+      this.$el.find("#tournament-content").html(compiledTemplate);
+    },
+    success : function(fetchSuccess){
+      this.fetchSuccess = fetchSuccess;
+    },
+    fetch : function(){
       var that = this;
 
       this.collection.fetch({
         success: function(tournaments, response, options){
-             that.render();
+            var groupedTournaments = that.collection.groupBy( function(model){
+                return model.get('start_date');
+            });
+
+            if(that.fetchSuccess){
+                that.fetchSuccess();
+            }
+            that.render(groupedTournaments);
           }
-      })
-
-    },
-
-    render: function(){
-     
-      console.log("render template..");
-      console.log(this.collection);
-      var groupedTournaments = this.collection.groupBy( function(model){
-          return model.get('start_date');
       });
-     
-
-       var compiledTemplate = _.template( tournamentListTemplate, { tournament_groups: groupedTournaments } );
-       this.$el.html(compiledTemplate);
+      return this;
     }
-
 
   });
 

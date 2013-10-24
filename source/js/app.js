@@ -4,7 +4,7 @@ define([
   'jquery',
   'underscore',
   'backbone',
-  'router', // Request router.js
+  'router' // Request router.js
 
 ], function($, _, Backbone, Router){
  
@@ -54,23 +54,24 @@ define([
         modelFetch.call(this, options);
     }
   
-   /* Backbone.Model.extend({
+    $( document ).on( "mobileinit",
+      // Set up the "mobileinit" handler before requiring jQuery Mobile's module
+      function() {
+        // Prevents all anchor click handling including the addition of active button state and alternate link bluring.
+        $.mobile.linkBindingEnabled = false;
 
-      // Overwrite save function
-      save: function(attrs, options) {
-          options || (options = {});
-          alert("Save override");
-          // Filter the data to send to the server
-          delete attrs.selected;
-          delete attrs.dontSync;
-
-          options.data = JSON.stringify(attrs);
-
-          // Proxy the call to the original save function
-          Backbone.Model.prototype.save.call(this, attrs, options);
+        // Disabling this will prevent jQuery Mobile from handling hash changes
+        $.mobile.hashListeningEnabled = false;
+        $.mobile.defaultPageTransition = 'slide';
       }
-    });*/
-    Router.initialize();
+    )
+
+    require( [ "jquery.mobile" ], function() {
+        // Instantiates a new Backbone.js Mobile Router
+        FED_APP.router = new Router();
+    });
+
+    
   }
 
   return {
