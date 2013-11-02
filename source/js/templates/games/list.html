@@ -4,27 +4,28 @@
 	      <header>
 	      		<h2>Games <%=start_day%></h2>
 	      </header>
-
-	    <% _.each(game_group, function(game){ %>
-	       <article class="details" id="<%=game.get("id")%>">
-
-	          <p class="result"><%= (game.get("team_1_score")) ? game.get("team_1_score") : '0' %>
-	         - 
-	         <%= (game.get("team_2_score")) ? game.get("team_2_score") : '0' %>
-	          </p>
-	          
-	          <p class="teams">
-	          	<span class="team_1_name">
-	          		<%= (game.get("team_1")) ? game.get("team_1").name : 'No Team.' %>
-	          	</span>
-	          
-	          	<span class="team_2_name">
-	          		<%= (game.get("team_2")) ? game.get("team_2").name : 'No Team.' %>
-	          	</span>
-	          </p>
-	          <p class="time"><%=game.get("start_time")%></p>
-	          <a href="#/game/score/<%=game.get("id")%>"></a>
-	        </article>
-	    <% }); %>
+	      <ul data-role="listview" data-inset="true">
+		    <% _.each(game_group, function(game){ %>
+		       <li class="details" id="<%=game.get("id")%>">
+	          	<a>
+		          	<h2 class="team_1_name">
+		          		<%= (game.get("team_1")) ? game.get("team_1").name : 'No Team.'%>
+		          	</h2>
+		          
+		          	<h2 class="team_2_name">
+		          		<%= (game.get("team_2")) ? game.get("team_2").name : 'No Team.' %>
+		          	</h2>
+		         
+					  <p class="time"><%=game.get("start_time")%></p>
+			          
+			          <p class="result"><%= (game.get("team_1_score")) ? game.get("team_1_score") : '0' %>
+			         - 
+			         <%= (game.get("team_2_score")) ? game.get("team_2_score") : '0' %>
+			          </p>
+		      	  </a>
+		          
+		        </li>
+		    <% }); %>
+			</ul>
     <% }); %>
 </section>

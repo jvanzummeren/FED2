@@ -7,13 +7,14 @@ define([
 
   var TournamentListView = Backbone.View.extend({
     el: $("#tournaments"),
-    initialize: function(){
-      
+
+    initialize: function(){      
       this.collection = new TournamentsCollection();
 
     },
+
     events : {
-        'tap a' : 'goToPools'
+        'tap li' : 'goToPools'
     },
     goToPools : function(e){
       $el = $(e.currentTarget);
@@ -26,6 +27,7 @@ define([
      
       var compiledTemplate = _.template( tournamentListTemplate, { tournament_groups: groupedTournaments } );
       this.$el.find("#tournament-content").html(compiledTemplate);
+      this.$el.page('destroy').page();
     },
     success : function(fetchSuccess){
       this.fetchSuccess = fetchSuccess;

@@ -1,14 +1,14 @@
 <form class="edit-score-form" name="update_score" method="POST">
-<legend>Update score</legend>
-<label>Team 1 score</label>
-<input type="text" name="team_1_score" value="<%= game.get('team_1_score') %>"/>
-<label>Team 2 score</label>
-<input type="text" name="team_2_score" value="<%= game.get('team_2_score') %>"/>
+	<legend>Update score</legend>
+	<label>Team 1 score</label>
+	<input type="text" name="team_1_score" value="<%= game.get('team_1_score') %>"/>
+	<label>Team 2 score</label>
+	<input type="text" name="team_2_score" value="<%= game.get('team_2_score') %>"/>
 
-<hr />
-<input type="hidden" name="game_id" value="<%= game.get('id') %>" />
-<input type="hidden" name="is_final" value="False" />
+	<hr />
+	<input type="hidden" name="game_id" value="<%= game.get('id') %>" />
+	<input type="hidden" name="is_final" value="True" />
 
-<button type="submit" class="btn">Update</button>
-<a class="test">Test</a>
+	<button type="button" class="btn">Update</button>
+
 </form>

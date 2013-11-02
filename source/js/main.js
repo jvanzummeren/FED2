@@ -8,7 +8,7 @@ require.config({
     'jquery': 'libs/jquery/jquery-min',
     'underscore': 'libs/underscore-amd/underscore-min',
     'backbone': 'libs/backbone-amd/backbone-min',
-    'jquery.mobile' : 'libs/jquery/jquery.mobile-1.3.2.min'
+    'jquery.mobile' : 'libs/jquery/jquery.mobile'
   },
 	shim: {
 	    backbone: {
@@ -17,7 +17,11 @@ require.config({
 	    },
 	    underscore: {
 	        exports: '_'
-	    }
+	    },
+      'jquery.mobile' : {
+        deps: ['underscore'],
+        exports: 'Mobile'
+      }
 	}
 });
 

@@ -1,4 +1,11 @@
-// Filename: collections/projects
+
+/*
+ * Collection for Pools
+ * External data: Leagevine /pools/
+ * 
+ * Loads pool data and orders it by name (Pool A, B, C, D)
+ */
+
 define([
   // Pull in the Model module from above
   'models/pool'
@@ -11,14 +18,17 @@ define([
       return this.urlRoot + "?fields=" + encodeURIComponent(this.fields);
     },
     model: PoolModel,
+    //find the actual objects in response.objects 
+    //deletes metadata retrieved from leagevine)
     parse: function(response) {
        return response.objects;
     },
+    //order by name
     comparator: function(model) {
       return model.get('name');
     }
 
   });
-  // You don't usually return a collection instantiated
+  //Return a collection instantiated
   return PoolsCollection;
 });

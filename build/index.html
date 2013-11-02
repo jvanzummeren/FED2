@@ -1,17 +1,64 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="ui-mobile">
     <head>
         <meta charset="UTF-8" />
         <title>Threesome Ultimate Frisbee - Game</title>
-        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.1.1/css/bootstrap.min.css">
-        <link rel="stylesheet" href="css/style.css" />
+
+        <!-- iPhone (Retina) -->
+        <!--link href="images/start-up-image/apple-touch-startup-image-640x920.png"
+              media="(device-width: 320px) and (device-height: 480px)
+                 and (-webkit-device-pixel-ratio: 2)"
+              rel="apple-touch-startup-image"-->
+        <!-- iPhone 5 -->
+        <!--link href="apple-touch-startup-image-640x1096.png"
+              media="(device-width: 320px) and (device-height: 568px)
+                 and (-webkit-device-pixel-ratio: 2)"
+              rel="apple-touch-startup-image"-->
+              <link rel="apple-touch-startup-image" href="images/start-up-image/apple-touch-startup-image-640x920.png" />  
+        
+        <link rel="stylesheet" href="css/jquery.mobile-1.3.2.min.css" />
+        <link rel="stylesheet" href="css/fedapp.css" />
+         <link rel="stylesheet" href="css/style.css">
+         
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <meta name="apple-mobile-web-app-capable" content="yes" />  
 
         <script data-main="js/main.js" src="js/requirejs/require.js"></script>
-
+       <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" /> 
     </head>
 
-    <body class="container">
+    <body>
+        
         <div id="menu"></div>
-        <div id="content"></div>     
+        <div id="tournaments" data-role="page" data-title="Tournaments" data-url="tournaments">
+
+              <div data-role="header" data-position="fixed" data-tap-toggle="false">
+                <h1>Tournaments</h1>
+              </div><!-- /header -->
+          
+              <div data-role="content" id="tournament-content">
+                   
+              </div><!-- /content -->
+        </div>
+        <div id="pools" data-role="page" data-title="Pools" data-url="pools" data-add-back-btn="true">
+
+              <div data-role="header" data-position="fixed" data-tap-toggle="false">
+                <h1>Pools</h1>
+              </div><!-- /header -->
+          
+              <div data-role="content" id="pool-content">
+                   
+              </div><!-- /content -->
+        </div>
+        <div id="update_score" data-role="page" data-title="Update Score" data-url="game/score"  data-add-back-btn="true">
+
+              <div data-role="header" data-position="fixed" data-tap-toggle="false">
+                <h1>Update Score</h1>
+              </div><!-- /header -->
+          
+              <div data-role="content" id="score-content">
+                   
+              </div><!-- /content -->
+        </div>
     </body>
 </html>

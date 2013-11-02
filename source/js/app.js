@@ -39,6 +39,22 @@ define([
         }
     });
 
+    jQuery.fn.highlight = function () {
+        $(this).each(function () {
+            var el = $(this);
+            $("<div/>")
+            .width(el.outerWidth())
+            .height(el.outerHeight())
+            .css({
+                "position": "absolute",
+                "left": el.offset().left,
+                "top": el.offset().top,
+                "background-color": "#ffff99",
+                "opacity": ".7",
+                "z-index": "9999999"
+            }).appendTo('body').fadeOut(10000).queue(function () { $(this).remove(); });
+        });
+    }
 
     var collectionFetch = Backbone.Collection.prototype.fetch;
 
@@ -62,7 +78,8 @@ define([
 
         // Disabling this will prevent jQuery Mobile from handling hash changes
         $.mobile.hashListeningEnabled = false;
-        $.mobile.defaultPageTransition = 'slide';
+
+        $.mobile.defaultPageTransition = 'slide';        
       }
     )
 

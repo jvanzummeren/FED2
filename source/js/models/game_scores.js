@@ -1,11 +1,13 @@
-// Filename: models/project
+/*
+* Not used?
+*/
+
 define([
   'backbone'
 ], function(Backbone){
   var GameScores = Backbone.Model.extend({
   id: null,
   urlRoot: "/game_scores/",
-  //urlRoot: "http://localhost/test",
   fields: "[]",
 
   url: function(){
@@ -14,10 +16,7 @@ define([
     }else{
       return this.urlRoot;
     }
-  }/*,
-  toJSON: function(options) {
-     return {}
-  }*/
+  }
 
   });
   // Return the model for the module
