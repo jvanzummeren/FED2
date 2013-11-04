@@ -1,4 +1,3 @@
-
 /*
  * Collection for Games
  * External data: Leagevine /games/
@@ -8,7 +7,7 @@
 
 define([
   // Pull in the Model module from above
-  'models/Game'
+  'models/game'
 ], function(GameModel){
   var GamesCollection = Backbone.Collection.extend({
     urlRoot: "/games/",
@@ -27,6 +26,7 @@ define([
       return model.get('start_time');
     }
   });
-  // You don't usually return a collection instantiated
+
+  // return a collection instantiated
   return GamesCollection;
 });
