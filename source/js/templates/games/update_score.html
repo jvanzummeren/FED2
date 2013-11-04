@@ -1,14 +1,26 @@
-<form class="edit-score-form" name="update_score" method="POST">
-	<legend>Update score</legend>
-	<label>Team 1 score</label>
-	<input type="text" name="team_1_score" value="<%= game.get('team_1_score') %>"/>
-	<label>Team 2 score</label>
-	<input type="text" name="team_2_score" value="<%= game.get('team_2_score') %>"/>
+<div class="game_scores">
+	<header>
+		<h1>Pool <%=game.get('pool').name%>, <%=game.get('start_day')%></h1>
+	</header>
+	<section>
+		<form class="edit-score-form" name="update_score" method="POST">
+			
+			<header>
+				<h1>Update score</h1>
+			</header>
 
-	<hr />
-	<input type="hidden" name="game_id" value="<%= game.get('id') %>" />
-	<input type="hidden" name="is_final" value="True" />
+			<label>Team 1: <%=game.get('team_1').name%></label>
+			<input type="text" name="team_1_score" value="<%= game.get('team_1_score') %>"/>
+			<label>Team 2: <%=game.get('team_2').name%></label>
+			<input type="text" name="team_2_score" value="<%= game.get('team_2_score') %>"/>
 
-	<button type="button" class="btn">Update</button>
+			<hr />
+			<input type="hidden" name="game_id" value="<%= game.get('id') %>" />
+			<input type="hidden" name="is_final" value="True" />
 
-</form>
+			<button type="button" class="btn">Update</button>
+
+		</form>
+
+	</section>
+</div>

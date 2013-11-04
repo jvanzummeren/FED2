@@ -40,7 +40,12 @@ define([
         'tap .details' : 'goToUpdateScore',
         'tap .ui-btn-left' : 'back',
         'touchstart .details' : 'touchbeginEvent',
-        'touchend .details' : 'touchendEvent'
+        'touchend .details' : 'touchendEvent',
+        'swiperight .pools'  : 'back'
+    },
+
+    swipeLeft : function(e){
+      alert("shit works like a swipe");
     },
 
     /**
@@ -108,13 +113,46 @@ define([
       var $li = this.$el.find("#"+ scoreDetails.get('game_id'));
       $li.find('.result').html(result_text);
       $li.find('.ui-btn-inner').highlight();
-      
-      var gameModel = this.games.where({id:scoreDetails.get('game_id')})[0];
 
-      gameModel.set({
-        team_1_score :  scoreDetails.get('team_1_score'),
-        team_2_score :  scoreDetails.get('team_2_score')
+      this.highlightRow($li);
+
+      var gameModel = this.games.where({id:scoreDetails.get('game_id')})[0];
+      console.log("GameModel:");
+      console.log(gameModel);
+
+      if(gameModel){
+        gameModel.set({
+          team_1_score :  scoreDetails.get('team_1_score'),
+          team_2_score :  scoreDetails.get('team_2_score')
+        });
+      }
+    },
+
+    highlightRow : function($row){
+      console.log('highlight like a mofo');
+      
+     
+      setTimeout(function(){
+         $('body').animate({
+            scrollTop: $row.offset().top - 100
+         },
+         {
+          duration: 1100,
+          complete : function(){
+           
+            console.log($row);
+            $row.addClass('row-highlight');
+
+            $row.one( 'webkitAnimationEnd', function( event ) {
+              $(this).removeClass('row-highlight');
+            });
+          }
+
+        }, 1100 );
+        
       });
+      
+      
     },
 
     /**

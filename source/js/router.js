@@ -7,13 +7,14 @@ define([
   
   var AppRouter = Backbone.Router.extend({
     routes: {
-      // Define some URL routes 
+      //Define some URL routes 
       'pools/:id'        : 'showPools',
       'game/score/:id'   : 'updateGameScore',
       'tournaments'      : 'showTournaments',
       'remove_scores'    : 'removeScores',      
       ''                 : 'showTournaments'
     }, 
+
     initialize : function(){
 
       console.log("router initialize");
@@ -30,8 +31,6 @@ define([
       FED_APP.updateGameScore.on("game_score_updated", function(scoreDetails) {
           FED_APP.poolsView.updateGameScore(scoreDetails);
       });
-
-      
 
       Backbone.history.start();
     },

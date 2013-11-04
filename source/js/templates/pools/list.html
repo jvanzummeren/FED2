@@ -1,36 +1,38 @@
-  <% _.each(pools, function(pool){ %>
-  <h2>Pool <%=pool.get('name') %></h2>
+<div class="pools">
+    <% _.each(pools, function(pool){ %>
+    <h2>Pool <%=pool.get('name') %></h2>
 
-  <table class="pool table-stroke pool-breakpoint" data-role="table" id="movie-table">
-    <thead>
-      <tr>
-          <th data-priority="persist">Team</th>
-          <th data-priority="1">W</th>
-          <th data-priority="2">L</th>
-          <th data-priority="3">GS</th>
-          <th data-priority="4">GA</th>
-          <th data-priority="5">+/-</th>
-      </tr>
-    </thead>
-    <tbody>
+    <table class="pool table-stroke pool-breakpoint" data-role="table" id="movie-table">
+      <thead>
+        <tr>
+            <th data-priority="persist">Team</th>
+            <th data-priority="1">W</th>
+            <th data-priority="2">L</th>
+            <th data-priority="3">GS</th>
+            <th data-priority="4">GA</th>
+            <th data-priority="5">+/-</th>
+        </tr>
+      </thead>
+      <tbody>
 
-       <% _.each(pool.get('standings'), function(standing){ %>
-          <tr>
-              <td><%=standing.team.name%></td>
-              <td><%=standing.wins%></td>
-              <td><%=standing.losses%></td>
-              <td><%=standing.points_scored%></td>
-              <td><%=standing.points_allowed%></td>
-              <td><%=standing.plus_minus%></td>
-          </tr>
-       <% }); %>
-    </tbody>
-  </table>
+         <% _.each(pool.get('standings'), function(standing){ %>
+            <tr>
+                <td><%=standing.team.name%></td>
+                <td><%=standing.wins%></td>
+                <td><%=standing.losses%></td>
+                <td><%=standing.points_scored%></td>
+                <td><%=standing.points_allowed%></td>
+                <td><%=standing.plus_minus%></td>
+            </tr>
+         <% }); %>
+      </tbody>
+    </table>
 
-  <%= _.template( gameListTemplate, { game_groups: pool.get('grouped_games') } )%>
+    <%= _.template( gameListTemplate, { game_groups: pool.get('grouped_games') } )%>
 
 
-  	
+    	
 
-  <% }); %>
+    <% }); %>
 
+</div>

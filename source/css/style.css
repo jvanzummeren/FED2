@@ -144,4 +144,19 @@ li.ui-btn{
 h1.ui-title{ text-shadow:none; font-size: 120% !important; height:40px; line-height: 40px; margin:0 !important; padding:0 !important;}
 .ui-header{ padding-top:15px !important;}
 .ui-listview-filter .ui-input-search{margin:0;}
+
+.row-highlight{
+	-webkit-animation:highlight 1s ease-out;
+
+}
+
+@-webkit-keyframes highlight{
+	0%{
+		background:#ffd957;
+	}
+	100%{
+		background:#FFFFFF;
+	}
+}
+
 	

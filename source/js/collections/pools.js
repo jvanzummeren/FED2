@@ -1,4 +1,3 @@
-
 /*
  * Collection for Pools
  * External data: Leagevine /pools/

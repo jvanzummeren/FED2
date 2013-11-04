@@ -26,6 +26,15 @@ define([
 
       var compiledTemplate = _.template( updateScoreTemplate,  { game:game });
       this.$el.find('#score-content').html(compiledTemplate);
+      console.log("$el");
+      console.log(this.$el);
+      if(this.rendered){
+        this.$el.page('destroy');
+      }
+
+      this.rendered = true;
+      this.$el.page();
+      
     },
 
     /**
@@ -68,7 +77,8 @@ define([
      */
     events: {
       'click .btn' : 'saveScore',
-      'tap .ui-btn-left' : 'back'
+      'tap .ui-btn-left' : 'back',
+      'swiperight .game_scores' : 'back'
     },
 
     /**

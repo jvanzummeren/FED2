@@ -4,7 +4,7 @@
     <li data-role="list-divider"><%=date%></li>
 
   	<% _.each(tournament_group, function(tournament){ %>
-      <li id="<%=tournament.get("id")%>">
+      <li id="<%=tournament.get("id")%>" class="tournament">
           <a><%= tournament.get('name') %></a>
       </li>
     <% }); %>

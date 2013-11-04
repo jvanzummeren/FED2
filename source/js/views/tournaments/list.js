@@ -10,11 +10,10 @@ define([
 
     initialize: function(){      
       this.collection = new TournamentsCollection();
-
     },
 
     events : {
-        'tap li' : 'goToPools'
+        'tap .tournament' : 'goToPools'
     },
     goToPools : function(e){
       $el = $(e.currentTarget);
