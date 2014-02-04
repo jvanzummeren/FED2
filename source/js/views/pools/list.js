@@ -209,6 +209,8 @@ define([
      * @return void
      */
 
+// you could of course use jquery promises here instead of your own confabulation
+
     combinePoolsAndGames : function(){
         //check if both pools and games are loaded before continueing
         if(!this.pools || !this.games) return;
